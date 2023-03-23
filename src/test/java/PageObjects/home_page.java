@@ -91,10 +91,17 @@ public class home_page {
 	
 			
 		}
+		public void Navigate_To_Home_Page()
+		{
+			driver.navigate().to(homeUrl);
+		}
 		
 		public void signinClick()throws Throwable {
 			driver.findElement(signin).click();
-			Thread.sleep(2000); //temp code
+		}
+		public void SendUserName_Password()
+		{
+			//Thread.sleep(2000); //temp code
 			driver.findElement(username).sendKeys("Numpy@sdet101"); //temp code
 			driver.findElement(password).sendKeys("testpassword"); //temp code
 			driver.findElement(loginbtn).click(); //temp code

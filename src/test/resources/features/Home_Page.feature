@@ -16,7 +16,7 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag
+@homepage
 Feature: Home_Page
   I want to use this template for my feature file
 
