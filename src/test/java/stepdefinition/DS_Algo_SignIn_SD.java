@@ -11,7 +11,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-//import utilities.ExcelUtils;
+
+
 import utilities.LoggerLoad;
 
 public class DS_Algo_SignIn_SD {
@@ -19,7 +20,7 @@ public class DS_Algo_SignIn_SD {
 	WebDriver driver;
 	home_page homePage = new home_page();
 	Sign_In_Objects signin=new Sign_In_Objects();
-	//ExcelUtils excel= new ExcelUtils();
+
 	//@SignIn
 	@Given("The User is on DS_Algo portal page")
 	public void the_user_is_on_ds_algo_portal_page() {
@@ -106,44 +107,59 @@ public class DS_Algo_SignIn_SD {
 	    //throw new io.cucumber.java.PendingException();
 	}
 
-	/*//@SignIn_03
-	@When("The user enter invalid {string} and {string}")
+	//@SignIn_03
+	@When("The user enter invalid (.*) and (.*)$")
 	public void the_user_enter_invalid_and(String userN, String passw) throws Throwable {
 	    
+		LoggerLoad.info("SIGNIN: User enters invalid credentials");
 		Thread.sleep(2000);
-		By username = null;
-		driver.findElement(username).sendKeys(userN);
-		Thread.sleep(2000);
-		By password=null;
-		driver.findElement(password).sendKeys(passw);
+		signin.invalid_credentials(userN, passw);
 		Thread.sleep(2000);
 	    //throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("click login button to verify")
-	public void click_login_button_to_verify() {
+	@And("click login button to verify")
+	public void click_login_button_to_verify() throws Throwable {
 	    
 		LoggerLoad.info("SIGNIN: User clicks on Login button");
 		signin.click_login_button();
+		Thread.sleep(2000);
+		
 	   // throw new io.cucumber.java.PendingException();
-	}*/
+	}
+	@Then("Check whether user is in Login page with invalid credentials")
+	public void Check_whether_user_is_in_Login_page_with_invalid_credentials()
+	{
+		
+		LoggerLoad.info("SIGNIN: User checks whether user is in same Login page");
+		String title = homePage.signinPage();
+	    assertEquals(title,"Login");
+	    System.out.println("Current Page title is: "+title);
+	}
 
-	/*//@SignIn_04
+	//@SignIn_04
 	
-	@When("The user enter sheet {string} and {string}")
-	public void the_user_enter_sheet_and(String sheet, int rownumber) {
+	@When("The user enter Username and Password from (.*) and (.*)$")
+	public void The_user_enter_Username_and_Password_from_and(String Sheetname, int RowNumber) throws Throwable {
 	   
-		signin.Enter_UserName_Password();
-		//password= excel.GetPassword();
+		LoggerLoad.info("SIGNIN: User enters UserName and Password from sheet"+Sheetname+" and RowNumber"+RowNumber);
+		signin.enter_userName_password(Sheetname,RowNumber);
+		
 	    //throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("click login button to check")
+	@And("click login button to check")
 	public void click_login_button_to_check() {
 	    
 		LoggerLoad.info("SIGNIN: User clicks on Login button");
 		signin.click_login_button();
 	    //throw new io.cucumber.java.PendingException();
+	}
+	@Then("Check for error message for invalid credentials")
+	public void Check_for_error_message()
+	{
+		LoggerLoad.info("SIGNIN: User checks for Error message for invalid credientials");
+		signin.check_for_error_message();
 	}
 
 	//@SignIn_05
@@ -169,6 +185,6 @@ public class DS_Algo_SignIn_SD {
 		LoggerLoad.info("SIGNIN: User Stays in HomePage after clicking on SignOut link");
 		homePage.homepageurl();
 	    //throw new io.cucumber.java.PendingException();
-	}*/
+	}
 
 }
