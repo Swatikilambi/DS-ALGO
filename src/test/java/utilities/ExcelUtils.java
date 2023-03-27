@@ -14,9 +14,6 @@ import org.openqa.selenium.WebDriver;
 
 public class ExcelUtils {
 	
-	static int rowcount;
-	
-	
 	
 	public static String getLoginCredentials(String sheetName,int rowNumber)
 	{

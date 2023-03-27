@@ -81,10 +81,6 @@ public class Sign_In_Objects {
 	public void click_login_button()
 	{
 		driver.findElement(loginbtn).click();
-		/*if(driver.findElement(username)!=null && driver.findElement(password)==null)
-		{
-			driver.findElement(username).clear();
-		}*/
 
 	}
 	public void Click_SignOut_Link()

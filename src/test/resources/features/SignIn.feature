@@ -36,7 +36,8 @@ Feature: Implement Sign_In Feature
   Scenario Outline: User on login page and login with invalid and valid inputs from Excel
     When The user enter Username and Password from <Sheetname> and <RowNumber>
     Then click login button to check
-    #Then Check for error message for invalid credentials
+    
+
 
     Examples: 
       | Sheetname | RowNumber |
