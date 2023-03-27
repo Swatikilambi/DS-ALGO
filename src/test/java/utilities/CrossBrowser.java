@@ -56,6 +56,7 @@ public class CrossBrowser {
 		
 	}
 	
+	
 	public static WebDriver getDriver() {
 		
 		return driver;

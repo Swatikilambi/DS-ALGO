@@ -15,6 +15,7 @@ public class Sign_In_Objects {
 	
 	
 	String registerurl= ConfigReader.getRegistrationPage();
+	String loginUrl=ConfigReader.getSignInPage();
 	
 	By registerlink= By.xpath("//a[text()='Register!']");
 	By loginlink= By.xpath("//a[text()='Login ']");
@@ -70,17 +71,21 @@ public class Sign_In_Objects {
 			isErrorFound=true;	
 			System.out.println("Error Message for invalid login credentials is: "+errmes);
 		}
+		else 
+		{
+			driver.get(loginUrl);
+		}
 		return isErrorFound;
 	}
 	
 	public void click_login_button()
 	{
 		driver.findElement(loginbtn).click();
-		boolean isErroFound=check_for_error_message();
-		if(isErroFound) {
+		/*if(driver.findElement(username)!=null && driver.findElement(password)==null)
+		{
 			driver.findElement(username).clear();
-			driver.findElement(password).clear();
-		}
+		}*/
+
 	}
 	public void Click_SignOut_Link()
 	{

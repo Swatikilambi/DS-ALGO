@@ -2,8 +2,12 @@ package stepdefinition;
 
 import static org.testng.Assert.assertEquals;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import PageObjects.Sign_In_Objects;
 import PageObjects.home_page;
@@ -74,7 +78,7 @@ public class DS_Algo_SignIn_SD {
 	}
 
 	@Then("The user redirected to Registration page from signin page")
-	public void the_user_redirected_to_registration_page_from_signin_page() {
+	public void the_user_redirected_to_registration_page_from_signin_page() throws InterruptedException {
 	   
 		LoggerLoad.info("SIGNIN: User redirects to  Register! Page");
 		homePage.registerPage();
@@ -83,17 +87,20 @@ public class DS_Algo_SignIn_SD {
 
 	//@SignIn_02
 	@Given("The User is on Registration page")
-	public void the_user_is_on_registration_page() {
+	public void the_user_is_on_registration_page() throws InterruptedException  {
 	    
 		LoggerLoad.info("SIGNIN: User is on Register! Page");
 		signin.Register_page_url();
+
+
 	    //throw new io.cucumber.java.PendingException();
 	}
 
 	@When("User clicks on Login link")
-	public void user_clicks_on_Login_link() {
+	public void user_clicks_on_Login_link() throws InterruptedException {
 	    
 		LoggerLoad.info("SIGNIN: User clicks on Login Link");
+	
 		signin.Click_Login_link();
 	    //throw new io.cucumber.java.PendingException();
 	}
@@ -112,9 +119,11 @@ public class DS_Algo_SignIn_SD {
 	public void the_user_enter_invalid_and(String userN, String passw) throws Throwable {
 	    
 		LoggerLoad.info("SIGNIN: User enters invalid credentials");
-		Thread.sleep(2000);
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		//wait.until(ExpectedConditions.titleContains("Login"));
 		signin.invalid_credentials(userN, passw);
 		Thread.sleep(2000);
+		
 	    //throw new io.cucumber.java.PendingException();
 	}
 
@@ -123,7 +132,6 @@ public class DS_Algo_SignIn_SD {
 	    
 		LoggerLoad.info("SIGNIN: User clicks on Login button");
 		signin.click_login_button();
-		Thread.sleep(2000);
 		
 	   // throw new io.cucumber.java.PendingException();
 	}
@@ -148,19 +156,19 @@ public class DS_Algo_SignIn_SD {
 	    //throw new io.cucumber.java.PendingException();
 	}
 
-	@And("click login button to check")
+	@Then("click login button to check")
 	public void click_login_button_to_check() {
 	    
 		LoggerLoad.info("SIGNIN: User clicks on Login button");
 		signin.click_login_button();
 	    //throw new io.cucumber.java.PendingException();
 	}
-	@Then("Check for error message for invalid credentials")
+	/*@Then("Check for error message for invalid credentials")
 	public void Check_for_error_message()
 	{
 		LoggerLoad.info("SIGNIN: User checks for Error message for invalid credientials");
 		signin.check_for_error_message();
-	}
+	}*/
 
 	//@SignIn_05
 	@Given("The user is in the Home page with valid  log in")
