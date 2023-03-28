@@ -139,4 +139,54 @@ public class ConfigReader {
 	
 	}
 	
+	//QueueHome
+	public static String getQueuePageUrl() {
+		String queuehomePage = properties.getProperty("Qhome");
+		if(queuehomePage != null)
+			return queuehomePage;
+		else
+			throw new RuntimeException("QueuehomePage url not specified in the config.properties file");
+		
+	}
+	
+	//Implementation of Queue in Python
+	public static String getImplementationOfQueueInPythonPageUrl() {
+		String implqueueinpython = properties.getProperty("QImp");
+		if(implqueueinpython != null)
+			return implqueueinpython;
+		else
+			throw new RuntimeException("Implementation of Queue in Python Page url not specified in the config.properties file");
+		
+	}
+	
+	//Implementation Using Collection.deque
+		public static String getImplementationUsingCollectionPageUrl() {
+			String implusingcollection = properties.getProperty("QImpCollection");
+			if(implusingcollection != null)
+				return implusingcollection;
+			else
+				throw new RuntimeException("Implementation Using Collection.deque Page url not specified in the config.properties file");
+			
+		}
+		
+	//Implementation Using array
+			public static String getImplementationUsingArrayPageUrl() {
+			String implusingarray = properties.getProperty("QImpArray");
+			if(implusingarray != null)
+				return implusingarray;
+				else
+					throw new RuntimeException("Implementation Using Array Page url not specified in the config.properties file");
+					
+				}
+	//Implementation Using array
+		public static String getQueueOperationPageUrl() {
+		String queueoperation = properties.getProperty("Qquopp");
+		if(queueoperation != null)
+			return queueoperation;
+			else
+				throw new RuntimeException("Queue Operation Page url not specified in the config.properties file");
+					
+			}
+	
+	
 }
