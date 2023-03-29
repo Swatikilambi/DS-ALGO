@@ -10,6 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ConfigReader {
 
 	private static Properties properties;
+	
 	private final static String configFilePath = "./src/test/resources/config.properties";
 	
 	
@@ -36,6 +37,7 @@ public class ConfigReader {
 		
 	}
 
+	
 
 	//Browser Type
 	public static String getBrowserType() {
@@ -57,6 +59,25 @@ public class ConfigReader {
 			throw new RuntimeException("Application url not specified in the config.properties file");
 	}
 	
+	/*//Excel
+	public static String getPath()
+	{
+		String path=properties.getProperty("Testdata.excel.path");
+		if(path!=null)
+			return path;
+		else
+			throw new RuntimeException("Path is not specified in the config.properties file");
+	}
+	public static String getSheetName()	
+	{
+		String sheetname=properties.getProperty("sheetName");
+		if(sheetname!=null)
+			return sheetname;
+		else
+			throw new RuntimeException("SheetName is is not specified in the config.properties file");
+
+	}*/
+	
 	//Homepage
 	public static String getHomePageUrl() {
 		String homePage = properties.getProperty("homepage");
@@ -66,6 +87,14 @@ public class ConfigReader {
 			throw new RuntimeException("Homepage url not specified in the config.properties file");
 		
 	}
+	public static String geturl(String pagename) {
+		String url = properties.getProperty(pagename);
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException(pagename + " url not specified in the Configuration.properties file.");
+	}
+	
 	
 	//Register
 	public static String getRegistrationPage() {

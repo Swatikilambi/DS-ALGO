@@ -106,7 +106,6 @@ public class DS_Algo_Queue_SD {
 	public void the_user_clicks_try_here_button() throws InterruptedException {
 	    
 		LoggerLoad.info("QUEUE: The User clicks on Try here button");
-		Thread.sleep(2000);
 		stackpage.click_TryHere();
 	}
 
@@ -192,9 +191,7 @@ public class DS_Algo_Queue_SD {
 	public void the_user_is_navigated_to_queue_page_from_implementation_of_queue_in_python_in_queue() throws InterruptedException {
 
 		LoggerLoad.info("QUEUE: The User navigates back to QUEUE Page from Implementation of Queue page");
-		
-		queue.navigate_To_Queuepage();
-		Thread.sleep(3000);
+		queue.navigate_To_Queuepage();		
 	}
 
 	@When("The User Clicks on Implementation using collections link")

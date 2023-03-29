@@ -7,15 +7,15 @@ import java.util.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import PageObjects.home_page;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utilities.LoggerLoad;
 
-public class DS_Algo_Home_SD {
-	
-		WebDriver driver;
-		home_page homePage = new home_page();
+public class DS_Algo_Homepage {
+
+	home_page homePage = new home_page();
 
 	@Given("The user opens DS Algo portal link")
 	public void the_user_opens_ds_algo_portal_link() {
@@ -25,8 +25,8 @@ public class DS_Algo_Home_SD {
 		
 	}
 
-	@When("The user clicks the {string} button")
-	public void the_user_clicks_the_button(String string) {
+	@When("The user clicks the Get Started button")
+	public void the_user_clicks_the_Get_Started_button() {
 		LoggerLoad.info("Click Get Started Button");
 		homePage.getStarted();
 		
@@ -39,7 +39,7 @@ public class DS_Algo_Home_SD {
 	   LoggerLoad.info("USer is on "+title+" page");
 		assertEquals(title,"NumpyNinja");
 	}
-
+	
 	@Given("The user is on Home page")
 	public void the_user_is_on_home_page() {
 		LoggerLoad.info("Homepage");
@@ -77,43 +77,36 @@ public class DS_Algo_Home_SD {
 	    	
 	    }
 	}
-	//@Given("The user opens home page")
-	//public void the_user_is_on_homepage() {
-	//	
-	//}
-
-	@When("The user clicks {string}")
+	@When("User clicks on Register link")
+	public void the_user_clicks_register() {
+		  LoggerLoad.info("HOme: User clicks on Register link");
+		  homePage.registerClick();
+			
+	}
+	@And("User is redirected to Register page")
+	public void user_redirected_to_register_page()
+	{
+		 LoggerLoad.info("HOme: User redirected to Register Page");
+		homePage.registerPage();
+	}
+	@Then("User is navigated to Homepage")
+	public void user_is_navigated_to_homepage()
+	{
+		LoggerLoad.info("HOme: User navigated tohomepage from register Page");
+		homePage.Navigate_To_Home_Page();
+	}
+	@When("The user clicks {string} and login with credentials")
 	public void the_user_clicks(String string) throws Throwable {
 		LoggerLoad.info("User clicks sign in link");
 		homePage.signinClick();
+		homePage.SendUserName_Password();
 	}
-
 	
-	
-	//@When("The user clicks sign in")
-	//public void the_user_clicks_sign_in(String string) {
-	//	LoggerLoad.info("User clicks sign in link");
-	//	homePage.signinClick();
-	   
-	//}
-
-	@Then("The user should be redirected to Sign in page")
+	@Then("The user should be redirected to homepage after Sign in with credentials")
 	public void the_user_should_be_redirected_to_sign_in_page() {
-	    LoggerLoad.info("User directed to sign in page");
-	    String title = homePage.signinPage();
-	    assertEquals(title,"Login");
-	        
-	    		
+	    LoggerLoad.info("User directed to Homepage after signin with credentials page");
+	    String title = homePage.getTitle();
+		   LoggerLoad.info("USer is on "+title+" page");
+			assertEquals(title,"NumpyNinja");
 	}
-	@When("The user clicks register")
-	public void the_user_clicks_register(String string) {
-	   assertEquals(true,true);
-	}
-
-	@Then("The user should be redirected to Register form")
-	public void the_user_should_be_redirected_to_register_form() {
-		assertEquals(true,true);
-	   
-	}
-
 }

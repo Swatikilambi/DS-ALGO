@@ -28,8 +28,8 @@ Feature: Implement Sign_In Feature
 
     Examples: 
       | username | password |
-      | user     |          |
-      |          | passowrd |
+      | sdet    |          |
+      |          | sdet111 |
       |          |          |
 
   @SignIn_04
